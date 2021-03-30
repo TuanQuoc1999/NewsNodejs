@@ -1,0 +1,29 @@
+{
+    "extends": [
+      "eslint:recommended",
+      "airbnb-base",
+      "eslint-config-airbnb-es5"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-console": "on",
+      "comma-dangle": "on",
+      "no-lonely-if": "on",
+      "prefer-destructuring": "on",
+      "valid-jsdoc": "on",
+      "object-shorthand": "on",
+      "import/prefer-default-export": "on",
+      "no-underscore-dangle": "on",
+      "indent": [0],
+      "func-names": [0],
+      "no-param-reassign": "on",
+      "max-len": "on",
+      "no-unsafe-negation": "on",
+      "no-unused-expressions": "on",
+      "no-undef": "on"
+    }
+  }
+  

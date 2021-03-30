@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+  app:
+    build: ./
+    container_name: tfw-backend
+    volumes:
+      - .:/app
+    tty: true
+    command:
+      - /bin/bash
+    ports:
+      - 3101:3101
+      - 9339:9339
+    expose:
+      - 3101
+      - 9339
+  mongo:
+    image: mongo:4.4.0
+    container_name: tfw-mongo
+    restart: always
+    ports:
+      - 3138:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME_FILE: /run/secrets/mongo/MONGO_INITDB_ROOT_USERNAME
+      MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongo/MONGO_INITDB_ROOT_PASSWORD
+      MONGO_INITDB_PASSWORD_FILE: /run/secrets/mongo/MONGO_INITDB_PASSWORD
+      MONGO_INITDB_USERNAME_FILE: /run/secrets/mongo/MONGO_INITDB_USERNAME
+      MONGO_INITDB_DATABASE_FILE: /run/secrets/mongo/MONGO_INITDB_DATABASE
+    volumes:
+      - ./mongo/data:/data/db
+      - ./mongo/secrets:/run/secrets/mongo
+      - ./mongo/entry-scripts:/docker-entrypoint-initdb.d
